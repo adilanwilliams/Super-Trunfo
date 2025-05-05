@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(){
     char letrasDosEstados[2];
@@ -8,16 +9,18 @@ int main(){
     float PIB[2];
     int quantidadePontosTuristicos[2];
 
-    printf("Super Trunfo\n\n");
-    printf("Cadastro da primeira carta: \n");
+    printf("=== Super Trunfo ===\n\n");
 
+    // Cadastro da primeira carta
+    printf("Cadastro da primeira carta:\n\n");
 
-    //cadastramento das cartas
     printf("Digite uma letra de 'A' a 'H' que represente um dos oito estados: ");
     scanf("%c", &letrasDosEstados[0]);
 
     printf("Digite o nome da cidade: ");
-    scanf("%s", &nomes[0]);
+    getchar(); // limpa o '\n' deixado no buffer
+    fgets(nomes[0], sizeof(nomes[0]), stdin);
+    nomes[0][strcspn(nomes[0], "\n")] = '\0'; 
 
     printf("Digite a população da cidade: ");
     scanf("%d", &populacao[0]);
@@ -40,7 +43,9 @@ int main(){
     scanf("%c", &letrasDosEstados[1]);
 
     printf("Digite o nome da cidade: ");
-    scanf("%s", &nomes[1]);
+    getchar(); // limpa o '\n' deixado no buffer
+    fgets(nomes[1], sizeof(nomes[1]), stdin);
+    nomes[1][strcspn(nomes[1], "\n")] = '\0'; 
 
     printf("Digite a população da cidade: ");
     scanf("%d", &populacao[1]);
@@ -56,7 +61,8 @@ int main(){
 
 
     //exibindo as cartas
-    printf("\nCarta %d: ", 1);
+    printf("\n\n\n--- Carta 1 ---\n");
+
     printf("\nEstado: %c", letrasDosEstados[0]);
     printf("\nCodigo: %c%s", letrasDosEstados[0], "01");
     printf("\nNome: %s", nomes[0]);
@@ -65,7 +71,7 @@ int main(){
     printf("\nPIB: %f bilhoes de reais", PIB[0]);
     printf("\nNúmero de Pontos Turísticos: %d\n", quantidadePontosTuristicos[0]);
 
-    printf("\nCarta %d: ", 2);
+    printf("\n\n\n--- Carta 2 ---\n");
     printf("\nEstado: %c", letrasDosEstados[1]);
     printf("\nCodigo: %c%s", letrasDosEstados[1], "11");
     printf("\nNome: %s", nomes[1]);
